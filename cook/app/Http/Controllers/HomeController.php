@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function redirectPath()
+    {
+        return 'admin';
+        //例）return 'costs/index';
+    }
 }

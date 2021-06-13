@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * 管理者権限にてアクセス可能なページ
+ */
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/', function () {
+        return view('admin');
+    });
+
 });
 
 Auth::routes();
 
+Route::get('/admin', 'AdminController@index')->name('admin');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+

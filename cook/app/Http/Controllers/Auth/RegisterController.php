@@ -69,4 +69,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function redirectPath()
+    {
+        return 'admin';
+        //例）return 'costs/index';
+    }
 }
