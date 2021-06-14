@@ -13,11 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     admin
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
