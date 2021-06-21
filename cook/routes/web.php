@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,16 +21,18 @@ Route::group(['middleware' => 'auth'], function () {
     });
     });
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
-	Route::get('/admin', 'AdminController@showUserList')->name('admin');
+	Route::get('/admin', 'AdminController@showUserList');
+    Route::get('/admin/{id}', 'AdminController@showDetail');
 });
 
- 
+    // Route::get('/admin', 'AdminController@showUserList')->name('admin');
 
 
 Auth::routes();
 
 
 
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 

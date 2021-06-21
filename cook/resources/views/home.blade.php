@@ -21,6 +21,6 @@
     </div>
 </div>
 @can('admin')
-	<p>あなたは管理者です</p>
+	<a href="{{'/admin'}}">管理者ページへ</a>
 @endcan
 @endsection

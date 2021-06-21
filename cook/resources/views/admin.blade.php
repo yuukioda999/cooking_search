@@ -35,7 +35,7 @@
       @foreach($user_list as $user)
       <tr>
 					
-          <td><a href="{{ url('admin/user/' . $user->id) }}">{{$user -> name}}</td>
+          <td><a href="{{ url('admin/' . $user->id) }}">{{$user -> name}}</a></td>
           <td>{{$user ->email}}</a></td>
           
           <td class="d-flex">
