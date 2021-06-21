@@ -20,4 +20,7 @@
         </div>
     </div>
 </div>
+@can('admin')
+	<p>あなたは管理者です</p>
+@endcan
 @endsection

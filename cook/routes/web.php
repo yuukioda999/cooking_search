@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,18 +14,23 @@
 /**
  * 管理者権限にてアクセス可能なページ
  */
-Route::group(['middleware' => 'admin'], function () {
-    Route::get('/', function () {
-        return view('admin');
-    });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    });
+Route::group(['middleware' => ['auth', 'can:admin']], function () {
+	Route::get('/admin', 'AdminController@showUserList')->name('admin');
 });
+
+ 
+
 
 Auth::routes();
 
-Route::get('/admin', 'AdminController@index')->name('admin');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 
