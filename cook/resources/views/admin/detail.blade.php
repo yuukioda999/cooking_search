@@ -20,6 +20,7 @@
 <table class="table table-striped table-hover">
       <h2>{{ $user->name }}</h2>
       <span>{{ $user->email }}</span>
+      <button type="button" class="btn primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
       </tr>
       
 	

@@ -16,13 +16,20 @@
  */
 
 Route::group(['middleware' => 'auth'], function () {
+    //トップ画面を表示
     Route::get('/', function () {
         return view('home');
     });
     });
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
-	Route::get('/admin', 'AdminController@showUserList');
-    Route::get('/admin/{id}', 'AdminController@showDetail');
+    //管理者トップ画面を表示
+	Route::get('/admin', 'AdminController@showUserList')->name('admin');
+    //ユーザー詳細を表示
+    Route::get('/admin/{id}', 'AdminController@showDetail')->name('detail');
+    //ユーザー編集画面を表示
+    Route::get('/admin/edit/{id}', 'AdminController@showEdit')->name('edit');
+    //ユーザー編集
+    Route::post('/admin/update', 'AdminController@exeUpdate')->name('update');
 });
 
     // Route::get('/admin', 'AdminController@showUserList')->name('admin');

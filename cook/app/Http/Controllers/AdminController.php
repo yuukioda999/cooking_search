@@ -28,7 +28,7 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
    }
 
    /**
-     * ユーザー一詳細を表示する
+     * ユーザ一詳細を表示する
      */
 
    public function showDetail($id){
@@ -39,5 +39,43 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
     
 
    }
+   /**
+     * ユーザー編集画面を表示する
+     */
+
+   public function showEdit($id){
+
+       $user = User::find($id);
+
+       return view('admin.edit',['user' => $user]);
+    
+
+   }
+
+   /**
+     * ユーザー更新をする
+     */
+
+    public function exeUpdate(Request $request){
+
+
+        $inputs = $request->all();
+
+       
+
+        $user = User::find($inputs ['id']);
+        $user->fill([
+            'name' => $inputs['name'],
+            'email' => $inputs['email']
+        ]);
+        $user->save();
+        \DB::commit();
+ 
+        return view('admin.edit',['user' => $user]);
+     
+ 
+    }
+
+
 
 }
