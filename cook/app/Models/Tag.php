@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
 
-    protected $fillable = ['recipe_id','name'];
+    protected $fillable = ['name'];
 
     public function recipes()
     {
-        return $this->belongsToMany(recipes::class); 
+        return $this->belongsToMany(Recipes::class,'recipe_tags'); 
     }
 }

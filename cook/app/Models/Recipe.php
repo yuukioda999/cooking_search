@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Recipe extends Model
 {
-    protected $fillable = [
-        'name',
-        'profile_image',
-        'text',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'profile_image',
+    // ];
 
     public function user()
     {
@@ -25,7 +24,9 @@ class Recipe extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class); 
+        return $this->belongsToMany(Tag::class,'recipe_tags'); 
     }
 
+
+    
 }

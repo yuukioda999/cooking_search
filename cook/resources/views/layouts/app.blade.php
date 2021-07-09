@@ -6,7 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -18,6 +20,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+   
+
+
+   
 </head>
 <body class=bg-light>
     <div id="app">
@@ -34,7 +41,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    @can('admin')
+	<a href="{{'/'}}">ユーザートップへ</a>
+        @endcan
+@can('admin')
+	<a href="{{'/admin'}}">ユーザー検索</a>
+        @endcan
+@can('admin')
+	<a href="{{'/admin/create'}}">レシピ作成</a>
+        @endcan
+@can('admin')
+	<a href="{{'/admin/recipe_list'}}">レシピ検索</a>
+        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,5 +95,6 @@
             @yield('content')
         </main>
     </div>
+    
 </body>
 </html>

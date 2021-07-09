@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- //ここから検索機能  -->
 
-<!-- ここから一覧表示 -->
 
 <div class="row">
 <div class="col-4 mx-auto" 
@@ -18,16 +16,25 @@
 
 
 <table class="table table-striped table-hover">
-      <h2>{{ $user->name }}</h2>
-      <span>{{ $user->email }}</span>
-      <button type="button" class="btn primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
-      </tr>
-      
-	
-			<div class="mt-3">
-			
+			<div class="form-group">
+                <label for="title">
+                    ユーザーネーム
+                </label>
+              <p>{{ $user->name }}</p>
+            </div>
+            <div class="form-group">
+                <label for="content">
+                    メールアドレス
+                </label>
+                <p>{{ $user->email }}</p>
+            </div>
+						<div class="mt-5">
+						<a class="btn btn-secondary text-light" onclick="location.href='/admin'">
+                    戻る
+                </a>
+						<button type="button" class="btn btn-primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
+						</div>
 			</div>
-			
 		</div>
 	</div>
 </div>

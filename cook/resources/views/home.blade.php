@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @can('admin')
+	<a href="{{'/admin'}}">管理者ページへ</a>
+        @endcan
             <div class="card">
+            
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -16,11 +20,11 @@
 
                     You are logged in!
                 </div>
+                
             </div>
+            
         </div>
     </div>
 </div>
-@can('admin')
-	<a href="{{'/admin'}}">管理者ページへ</a>
-@endcan
+
 @endsection

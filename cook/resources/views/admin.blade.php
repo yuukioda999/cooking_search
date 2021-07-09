@@ -6,6 +6,7 @@
 <!-- ここから一覧表示 -->
 
 <div class="row">
+
 <div class="col-4 mx-auto" 
 ><div class="form-group">
 <form class="form-inline" method="get" action="{{url('admin')}}">
@@ -17,6 +18,15 @@
 </div>
 </div>
 <div class="container col-md-10 col-md-offset-2">
+<!-- @can('admin')
+	<a href="{{'/'}}">ユーザートップへ</a>
+        @endcan
+@can('admin')
+	<a href="{{'/admin'}}">ユーザー検索</a>
+        @endcan
+@can('admin')
+	<a href="{{'/admin/create'}}">レシピ作成</a>
+        @endcan -->
 	<div class="card">
 		<div class="card-header">ユーザーリスト</div>
 		<div class="card-body table-responsive-sm">
