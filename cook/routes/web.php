@@ -34,12 +34,8 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::post('/admin/store', 'AdminController@store')->name('store'); 
     //レシピ検索
     Route::get('/admin/recipe_list', 'AdminController@recipe_list')->name('recipe_list'); 
-    //レシピ詳細を表示
-    Route::get('/admin/recipe_list/{id}', 'AdminController@recipe_showDetail')->name('recipe_detail');
-    //レシピ編集画面を表示
-    Route::get('/admin/recipe_list/recipe_edit/{id}', 'AdminController@recipe_showEdit')->name('recipe_edit');
-    //レシピ編集
-    Route::post('/admin/recipe_list/update', 'AdminController@recipe_exeUpdate')->name('recipe_update');
+    
+   
     
 
     //ユーザー詳細を表示
@@ -48,6 +44,15 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::get('/admin/edit/{id}', 'AdminController@showEdit')->name('edit');
     //ユーザー編集
     Route::post('/admin/update', 'AdminController@exeUpdate')->name('update');
+
+    //レシピ詳細を表示
+    Route::get('/admin/recipe_list/{id}', 'AdminController@recipe_showDetail')->name('recipe_detail');
+    //レシピ編集画面を表示
+    Route::get('/admin/recipe_list/recipe_edit/{id}', 'AdminController@recipe_showEdit')->name('recipe_edit');
+    //レシピ編集
+    Route::post('/admin/recipe_list/recipe_update', 'AdminController@recipe_exeUpdate')->name('recipe_update');
+    //レシピ削除
+    Route::post('/admin/recipe_list/delete/{id}/', 'AdminController@exeDelete')->name('delete');
     
 });
 

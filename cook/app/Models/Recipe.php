@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Recipe extends Model
 {
-    // protected $fillable = [
-    //     'name',
-    //     'profile_image',
-    // ];
+    protected $fillable = [
+        'name',
+        'profile_image',
+        'text1',
+        'text2',
+       
+    ];
 
     public function user()
     {

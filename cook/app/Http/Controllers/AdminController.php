@@ -92,7 +92,6 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
      {
         $recipe = $request->validate([
             'name' => 'required|max:50',
-            'text1' => 'required|max:2000',
         ]);
 
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
@@ -126,8 +125,10 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
         $recipe->save();
         $recipe->tags()->attach($tags_id);
      
+    
+    
 
-        return redirect()->route('admin');
+        return redirect()->route('recipe_list');
     }
 
 /**
@@ -174,5 +175,79 @@ public function recipe_showEdit($id){
  
 
 }
+
+
+
+public function recipe_exeUpdate(Request $request)
+     {
+
+        $inputs = $request->all();
+
+       
+            // ブログを更新
+           
+            $recipe = Recipe::find($inputs['id']);
+            $recipe->fill([
+                'name' => $inputs['name'],
+                'text1' => $inputs['text1'],
+                'text2' => $inputs['text2'],   
+            ]);
+            // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+
+        // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);// firstOrCreateメソッドで、tags_tableのnameカラムに該当のない$tagは新規登録される。
+            array_push($tags, $record);
+            // $recordを配列に追加します(=$tags)
+        };
+
+        // 投稿に紐付けされるタグのidを配列化
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        };
+         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+
+        // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);// firstOrCreateメソッドで、tags_tableのnameカラムに該当のない$tagは新規登録される。
+            array_push($tags, $record);
+            // $recordを配列に追加します(=$tags)
+        };
+
+        // 投稿に紐付けされるタグのidを配列化
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        };
+         
+            $image_path = $request->file('profile_image')->store('public/avatar/');
+            $recipe->profile_image =  basename($image_path);
+        
+           
+            $recipe->save(); 
+            $recipe->tags()->sync($tags_id);
+ 
+        
+        return redirect()->route('recipe_list');
+    }
+
+
+
+    public function exeDelete($id)
+    {
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+      
+
+         return redirect()->route('recipe_list');
+    }
+
+
+
 
 }

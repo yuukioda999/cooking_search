@@ -26,10 +26,12 @@
       <tr>
           <th>料理名</th>
           <th>画像</th>
-          <th>材料</th>
-          <th>レシピ</th>
+          <!-- <th>材料</th>
+          <th>レシピ</th> -->
           <th>タグ</th>
           <th></th>
+        
+        
      
      
           
@@ -44,17 +46,16 @@
           <div class="col-md-6 d-flex align-items-center">
           <td><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
 </div></td> 
-          <td>{{$recipe->text1}}</a></td>
-          <td>{{$recipe->text2}}</a></td>
-          @foreach($recipe->tags as $recipe_tag)
-          <td> <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span></td>
+          <!-- <td>{{$recipe->text1}}</a></td>
+          <td>{{$recipe->text2}}</a></td> -->
+          <td>@foreach($recipe->tags as $recipe_tag)
+           <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
           @endforeach
-      
-          
-          <td class="d-flex">
-          </form></td>
-          
-          
+          </td>
+         <td>  <form action="/admin/recipe_list/delete/{{$recipe->id}}" method="POST">
+  {{ csrf_field() }}
+  <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell">
+  </form></td>
       </tr>
  
       
@@ -73,5 +74,18 @@
 	</div>
 </div>
 </div>
-
+@section('script')
+  <script>
+  $(function(){
+  $(".btn-dell").click(function(){
+  if(confirm("本当に削除しますか？")){
+    return true;
+  }else{
+   
+  return false;
+  }
+  });
+  });
+  </script>
+@endsection
 @endsection

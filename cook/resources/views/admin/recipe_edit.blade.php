@@ -56,8 +56,8 @@
                     id="text1"
                     name="text1"
                     class="form-control"
-                    value="{{ $recipe->text1}}"   
-                ></textarea>
+                
+                >{{ $recipe->text1}}</textarea>
 
                 <label for="content">
                     レシピ
@@ -67,10 +67,10 @@
                     name="text2"
                     class="form-control"
                     value="{{ $recipe->text2 }}"   
-                ></textarea>
+                >{{ $recipe->text2}}</textarea>
 
 
-                <label for="title">
+                <!-- <label for="title">
                     タグ
                 </label>
                 <input
@@ -79,7 +79,16 @@
                     class="form-control"
                     value="{{ $recipe->tag }}"
                     type="text"
-                >
+                > -->
+                <label for="tags">
+                            タグ
+                        </label>
+                        <input id="tags" name="tags"  class="form-control {{ $errors->has('tags') ? 'is-invalid' : '' }}" value="{{ old('tags') }}"type="text">
+                        @if ($errors->has('tags'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('tags') }}
+                            </div>
+                        @endif
                 <div>@foreach($recipe->tags as $recipe_tag)
                 
                 <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
@@ -109,33 +118,8 @@
 	</div>
 </div>
 </div>
-<script>jQuery.noConflict();
 
 
-$(function() {
-  $('input[type=file]').after('<span></span>');
 
-  // アップロードするファイルを選択
-  $('input[type=file]').change(function() {
-    var file = $(this).prop('files')[0];
 
-    // 画像以外は処理を停止
-    if (! file.type.match('image.*')) {
-      // クリア
-      $(this).val('');
-      $('span').html('');
-      return;
-    }
-
-    // 画像表示
-    var reader = new FileReader();
-    reader.onload = function() {
-      var img_src = $('<img>').attr('src', reader.result);
-      $('span').html(img_src);
-    }
-    reader.readAsDataURL(file);
-  });
-});
-});
-</script>
 @endsection
