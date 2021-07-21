@@ -68,18 +68,6 @@
                     class="form-control"
                     value="{{ $recipe->text2 }}"   
                 >{{ $recipe->text2}}</textarea>
-
-
-                <!-- <label for="title">
-                    タグ
-                </label>
-                <input
-                    id="tag"
-                    name="tag"
-                    class="form-control"
-                    value="{{ $recipe->tag }}"
-                    type="text"
-                > -->
                 <label for="tags">
                             タグ
                         </label>
@@ -104,10 +92,10 @@
                 </button>
             </div>
         </form>
-
 <table class="table table-striped table-hover">
       
       </tr>
+      
       
 	
 			<div class="mt-3">

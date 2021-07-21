@@ -248,6 +248,77 @@ public function recipe_exeUpdate(Request $request)
     }
 
 
+    /**
+     * レシピ検索画面を表示する
+     */
+
+   public function recipeSearch(Request $request){
+
+    // $tags = Tag::inRandomOrder()->take(5)->get();
+    // $tags = \DB::table('tags')->first();     
+    // $tags = Tag::inRandomOrder()->first();
+
+    $tags1 = Tag::inRandomOrder()->take(1)->get();
+    $tags2 = Tag::inRandomOrder()->take(1)->get();
+    $tags3 = Tag::inRandomOrder()->take(1)->get();
+    $tags4 = Tag::inRandomOrder()->take(1)->get();
+    $tags5 = Tag::inRandomOrder()->take(1)->get();
+    $tags6 = Tag::inRandomOrder()->take(1)->get();
+    $tags7 = Tag::inRandomOrder()->take(1)->get();
+    $tags8 = Tag::inRandomOrder()->take(1)->get();
+    $tags9 = Tag::inRandomOrder()->take(1)->get();
+    $tags10 = Tag::inRandomOrder()->take(1)->get();
+  
+    
+
+
+    
+
+    return view('home',compact('tags1','tags2','tags3','tags4','tags5','tags6','tags7','tags8','tags9','tags10'));
+ 
+
+}
+
+
+
+
+public function recipe_search(Request $request){
+
+
+$keyword = $request->input('keyword'); //商品名の値
+$keyword2 = $request->input('keyword2'); //カテゴリの値
+
+$query = Tag::query();
+
+if (isset($keyword)) {
+    $query->where('name', 'like', '%' . self::escapeLike($keyword) . '%');
+}
+
+if (isset($keyword2)) {
+    $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+}
+
+$tags = $query->orderBy('id', 'asc')->paginate(15);
+
+
+$category = new Recipe;
+$categories = $category->getLists();
+
+$tags = Tag::with('recipes')->get();
+
+return view('recipe_search', [
+    'tags' => $tags,
+    'categories' => $categories,
+    'keyword' => $keyword,
+    'keyword2' => $keyword2
+]);
+
+   
+}
+public static function escapeLike($str)
+{
+    return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
+}
 
 
 }

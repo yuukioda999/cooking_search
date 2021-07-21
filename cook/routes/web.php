@@ -11,19 +11,28 @@
 |
 */
 
+
+
+
+
+
 /**
  * 管理者権限にてアクセス可能なページ
  */
 
-Auth::routes();
-
 
 Route::group(['middleware' => 'auth'], function () {
-    //トップ画面を表示
-    Route::get('/', function () {
-        return view('home');
+    
+    Route::get('/', 'AdminController@recipeSearch')->name('search');
     });
-    });
+
+
+    Auth::routes();
+
+     //レシピ検索
+     Route::get('/admin/recipe_search', 'AdminController@recipe_search')->name('recipe_search'); 
+
+    
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
     
     //管理者トップ画面を表示
@@ -34,6 +43,7 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::post('/admin/store', 'AdminController@store')->name('store'); 
     //レシピ検索
     Route::get('/admin/recipe_list', 'AdminController@recipe_list')->name('recipe_list'); 
+   
     
    
     
@@ -54,7 +64,13 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     //レシピ削除
     Route::post('/admin/recipe_list/delete/{id}/', 'AdminController@exeDelete')->name('delete');
     
+
+
+
 });
+
+
+
 
    
 

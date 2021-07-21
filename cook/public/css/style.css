@@ -1,3 +1,10 @@
+@charset "utf-8";
+
+
 p {
   white-space: pre-wrap;
 }
+
+input[type=radio] {
+  display: none; 
+  }
