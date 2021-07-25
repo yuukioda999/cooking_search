@@ -95,7 +95,7 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
         ]);
 
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙ー-]+)/u', $request->tags, $match);
 
         // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
         $tags = [];
@@ -285,32 +285,115 @@ public function recipe_exeUpdate(Request $request)
 public function recipe_search(Request $request){
 
 
-$keyword = $request->input('keyword'); //商品名の値
-$keyword2 = $request->input('keyword2'); //カテゴリの値
+$keyword = $request->input('keyword'); 
+$keyword2 = $request->input('keyword2'); 
+$keyword3 = $request->input('keyword3'); 
+$keyword4 = $request->input('keyword4'); 
+$keyword5 = $request->input('keyword5'); 
+$keyword6 = $request->input('keyword6'); 
+$keyword7 = $request->input('keyword7'); 
+$keyword8 = $request->input('keyword8'); 
+$keyword9 = $request->input('keyword9'); 
+$keyword10 = $request->input('keyword10'); 
 
-$query = Tag::query();
+$query = Recipe::query();
+
 
 if (isset($keyword)) {
-    $query->where('name', 'like', '%' . self::escapeLike($keyword) . '%');
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword) . '%');
+
+    $query->WhereHas('tags', function ($query) use ($keyword){
+        $query->where('name', 'like', '%' . $keyword . '%');
+    });
 }
 
 if (isset($keyword2)) {
-    $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword2){
+        $query->where('name', 'like', '%' . $keyword2 . '%');
+    });
+}
+
+if (isset($keyword3)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword3){
+        $query->where('name', 'like', '%' . $keyword3 . '%');
+    });
+}
+
+if (isset($keyword4)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword4){
+        $query->where('name', 'like', '%' . $keyword4 . '%');
+    });
+}
+
+if (isset($keyword5)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword5){
+        $query->where('name', 'like', '%' . $keyword5 . '%');
+    });
+}
+
+if (isset($keyword6)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword6){
+        $query->where('name', 'like', '%' . $keyword6 . '%');
+    });
+}
+
+if (isset($keyword7)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword7){
+        $query->where('name', 'like', '%' . $keyword7 . '%');
+    });
+}
+
+if (isset($keyword8)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword8){
+        $query->where('name', 'like', '%' . $keyword8 . '%');
+    });
+}
+
+if (isset($keyword9)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword9){
+        $query->where('name', 'like', '%' . $keyword9 . '%');
+    });
+}
+
+if (isset($keyword10)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword2) . '%');
+    $query->WhereHas('tags', function ($query) use ($keyword10){
+        $query->where('name', 'like', '%' . $keyword10 . '%');
+    });
 }
 
 $tags = $query->orderBy('id', 'asc')->paginate(15);
 
 
-$category = new Recipe;
-$categories = $category->getLists();
 
-$tags = Tag::with('recipes')->get();
+// $category = new Recipe;
+// $categories = $category->getLists();
+
+// $tags = Recipe::with('tags')->get();
+
+
 
 return view('recipe_search', [
     'tags' => $tags,
-    'categories' => $categories,
+    // 'categories' => $categories,
     'keyword' => $keyword,
-    'keyword2' => $keyword2
+    'keyword2' => $keyword2,
+    'keyword3' => $keyword3,
+    'keyword4' => $keyword4,
+    'keyword5' => $keyword5,
+    'keyword6' => $keyword6,
+    'keyword7' => $keyword7,
+    'keyword8' => $keyword8,
+    'keyword9' => $keyword9,
+    'keyword10' => $keyword10
 ]);
 
    

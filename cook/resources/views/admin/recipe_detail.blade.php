@@ -41,7 +41,7 @@
                 </label>
                 <div>@foreach($recipe->tags as $recipe_tag)
                 
-                <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
+                <span class="badge rounded-pill bg-primary">{{$recipe_tag->name}}</span>
                 @endforeach
                 </div>
                 

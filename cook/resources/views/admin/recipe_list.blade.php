@@ -46,10 +46,9 @@
           <div class="col-md-6 d-flex align-items-center">
           <td><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
 </div></td> 
-          <!-- <td>{{$recipe->text1}}</a></td>
-          <td>{{$recipe->text2}}</a></td> -->
+         
           <td>@foreach($recipe->tags as $recipe_tag)
-           <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
+           <span class="badge rounded-pill bg-primary">{{$recipe_tag->name}}</span>
           @endforeach
           </td>
          <td>  <form action="/admin/recipe_list/delete/{{$recipe->id}}" method="POST">

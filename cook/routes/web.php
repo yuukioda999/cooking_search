@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Auth::routes();
 
      //レシピ検索
-     Route::get('/admin/recipe_search', 'AdminController@recipe_search')->name('recipe_search'); 
+     Route::get('/recipe_search', 'AdminController@recipe_search')->name('recipe_search'); 
 
     
 Route::group(['middleware' => ['auth', 'can:admin']], function () {

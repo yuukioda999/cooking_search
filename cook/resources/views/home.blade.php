@@ -8,7 +8,7 @@
 
 
 
-        <form class="form-inline" method="get" action="{{url('admin/recipe_list')}}">
+        <form class="form-inline" method="get" action="{{url('/recipe_search')}}">
   
 
   
@@ -24,38 +24,39 @@
 <input type="checkbox" class="btn-check" name="keyword2" value="{{$tag->name}}" id="btn-check-2-outlined" autocomplete="off" >
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-2-outlined">{{ $tag->name }}</label><br>
       @endforeach
+      
 
         @foreach($tags3 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-3-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check"name="keyword3" value="{{$tag->name}}" id="btn-check-3-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-3-outlined">{{ $tag->name }}</label><br>
       @endforeach
 
         @foreach($tags4 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-4-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword4" value="{{$tag->name}}" id="btn-check-4-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-4-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags5 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-5-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword5" value="{{$tag->name}}" id="btn-check-5-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-5-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags6 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-6-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword6" value="{{$tag->name}}" id="btn-check-6-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill " for="btn-check-6-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags7 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-7-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword7" value="{{$tag->name}}" id="btn-check-7-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-7-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags8 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-8-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword8" value="{{$tag->name}}" id="btn-check-8-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-8-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags9 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-9-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword9" value="{{$tag->name}}" id="btn-check-9-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-9-outlined">{{ $tag->name }}</label><br>
       @endforeach
         @foreach($tags10 as $tag)
-<input type="checkbox" class="btn-check" id="btn-check-10-outlined" autocomplete="off">
+<input type="checkbox" class="btn-check" name="keyword10" value="{{$tag->name}}" id="btn-check-10-outlined" autocomplete="off">
 <label class="btn btn-outline-primary rounded-pill" for="btn-check-10-outlined">{{ $tag->name }}</label><br>
       @endforeach
 
