@@ -30,10 +30,7 @@ class Recipe extends Model
         return $this->belongsToMany(Tag::class,'recipe_tags'); 
     }
 
-    public function getLists()
-    {
-        $categories = Tag::pluck('name', 'id');
-        return $categories;
-    }
+    
+   
     
 }

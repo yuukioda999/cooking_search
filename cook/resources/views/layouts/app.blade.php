@@ -18,7 +18,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <!-- Styles -->
     
@@ -33,7 +33,7 @@
 </head>
 <body class=bg-light>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning  shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#aaffd5;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -44,28 +44,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                    @can('admin')
-	<a class="text-light" href="{{'/'}}">ユーザートップへ</a>
-        @endcan
-@can('admin')
-	<a class="text-light"href="{{'/admin'}}">ユーザー検索</a>
-        @endcan
-@can('admin')
-	<a class="text-light"href="{{'/admin/create'}}">レシピ作成</a>
-        @endcan
-@can('admin')
-	<a class="text-light"href="{{'/admin/recipe_list'}}">レシピ検索</a>
-        @endcan
-@can('admin')
-	<a class="text-light"href="{{'/admin'}}">ユーザー管理へ</a>
-        @endcan
-                    </ul>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        
+      <div class="navbar-nav ml-auto">
+      
+        <a class="nav-link" href="{{'/'}}">ユーザートップ</a>
+       
+        <a class="nav-link" href="{{'/mypage'}}">マイページ</a>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+        @can('admin')
+        <a class="nav-link" href="{{'/admin'}}">ユーザー検索</a>
+        @endcan
+
+        @can('admin')
+        <a class="nav-link" href="{{'/admin/create'}}">レシピ作成</a>
+        @endcan
+
+        @can('admin')
+        <a class="nav-link" href="{{'/admin/recipe_list'}}">レシピ検索</a>
+        @endcan
+</div>
+   
+          <!-- Right Side Of Navbar -->
+          <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -79,7 +80,7 @@
                         @else
 
 
-                        <div class="navbar-right  mr-auto">
+                        <div class="navbar-right">
                         <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   {{ Auth::user()->name }}</a>
     <ul class="dropdown-menu">
@@ -93,7 +94,14 @@
  </form>      
     </ul>
   </li>         
-</div>              @endguest
+</div>    
+      </div>
+    </div>
+                  
+  
+
+
+                            @endguest
                     </ul>
                 </div>
             </div>

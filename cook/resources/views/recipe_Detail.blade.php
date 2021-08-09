@@ -44,15 +44,19 @@
                 <span class="badge rounded-pill bg-primary">{{$recipe_tag->name}}</span>
                 @endforeach
                 </div>
-                
+    <!-- ここから -->
+
+                            <!-- ここまで -->
+
+
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/admin/recipe_list'">
+						<a class="btn btn-secondary text-light" onclick="location.href='/recipe_search/'">
                     戻る
                 </a>
-						<button type="button" class="btn btn-primary" onclick="location.href='/admin/recipe_list/recipe_edit/{{ $recipe->id }}'">編集</button>
-						</div>
+		                  
 
+						</div>
 			</div>
 		</div>
 	</div>

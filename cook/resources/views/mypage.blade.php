@@ -1,4 +1,11 @@
-@extends('layouts.app')
+
+  <!-- @foreach ($recipes as $recipe)
+
+
+  <u><b>{{ $recipe->name }}</b></u>
+
+  @endforeach -->
+  @extends('layouts.app')
 
 @section('content')
 <!-- //ここから検索機能  -->
@@ -20,33 +27,33 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         
 
-        @foreach($tags as $tag)
+        @foreach($recipes as $recipe)
         <div class="col">
           <div class="card shadow-sm">
-          <img src="{{ asset('storage/avatar/' .$tag->profile_image) }}"  class="mr-3" width="100%" height="250" alt="profile_image">
+          <img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-3" width="100%" height="250" alt="profile_image">
     
             <div class="card-body">
-              <p class="card-text">{{ $tag->name }}</p>
+              <p class="card-text">{{ $recipe->name }}</p>
               
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
               
-                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url('/recipe_search/recipe_Detail/' . $tag->id) }}">見る</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url('/recipe_search/recipe_Detail/' . $recipe->id) }}">見る</a>
                   
 
                 </div>
   
                <!-- ここから -->
 <div class="d-flex align-items-center">
-                @if (!in_array($user->id, array_column($tag->favorites->toArray(), 'user_id'), TRUE))
+                @if (!in_array($user->id, array_column($recipe->favorites->toArray(), 'user_id'), TRUE))
                     <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
                         @csrf
 
-                        <input type="hidden" name="tag_id" value="{{ $tag->id }}">
+                        <input type="hidden" name="tag_id" value="{{ $recipe->id }}">
                         <button type="submit" class="btn p-0 border-0 text-primary"><i class="fas fa-star text-black-50"></i></button>
                     </form>
                 @else
-                    <form method="POST" action="{{ url('favorites/' .array_column($tag->favorites->toArray(), 'id', 'user_id')[$user->id]) }}" class="mb-0">
+                    <form method="POST" action="{{ url('favorites/' .array_column($recipe->favorites->toArray(), 'id', 'user_id')[$user->id]) }}" class="mb-0">
                         @csrf
                         @method('DELETE')
 

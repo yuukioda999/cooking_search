@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Models\Favorite;
 use App\Models\Tag;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
@@ -81,13 +82,17 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
     }
 
 
-    // レシピ作成画面の表示
+    
+     /**
+     * レシピ作成画面の表示
+     */
     public function create()
     {
         return view('admin.create');
     }
 
     //投稿のDBへのレコード作成
+    
     public function store(Request $request)
      {
         $recipe = $request->validate([
@@ -282,8 +287,15 @@ public function recipe_exeUpdate(Request $request)
 
 
 
-public function recipe_search(Request $request){
+public function recipe_search(Request $request,Recipe $recipe){
 
+    $user = auth()->user();
+
+    // $recipe = new Recipe;
+
+    // $recipe = Recipe::findOrFail($id); // findOrFail 見つからなかった時の例外処理
+
+      $favorite = $recipe->favorites()->where('user_id', Auth::user()->id)->first();
 
 $keyword = $request->input('keyword'); 
 $keyword2 = $request->input('keyword2'); 
@@ -374,16 +386,12 @@ $tags = $query->orderBy('id', 'asc')->paginate(15);
 
 
 
-// $category = new Recipe;
-// $categories = $category->getLists();
-
-// $tags = Recipe::with('tags')->get();
-
 
 
 return view('recipe_search', [
     'tags' => $tags,
-    // 'categories' => $categories,
+    'user' => $user,
+    'recipe' => $recipe,
     'keyword' => $keyword,
     'keyword2' => $keyword2,
     'keyword3' => $keyword3,
@@ -393,8 +401,9 @@ return view('recipe_search', [
     'keyword7' => $keyword7,
     'keyword8' => $keyword8,
     'keyword9' => $keyword9,
-    'keyword10' => $keyword10
-]);
+    'keyword10' => $keyword10,
+    compact('recipe', 'favorite')
+])->with(array('recipe' => $recipe, 'favorite' => $favorite));
 
    
 }
@@ -402,6 +411,62 @@ public static function escapeLike($str)
 {
     return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
 }
+
+
+public function recipe_Detail($id){
+
+    $recipe = Recipe::find($id);
+
+    return view('recipe_Detail',['recipe' => $recipe]);
+ 
+
+}
+
+public function mypage(Request $request){
+
+    // $user = Auth::user();
+
+    // // $favorites = Favorite::where('user_id', $user->id)->get();
+
+    // $favorites = Favorite::where('user_id', $user->id)->get();
+    // $name[] = $favorites;
+    // dd($name);
+    // return view("mypage",['user' => $user]);
+    // $user_id = Auth::user();
+ 
+    // $recipes = DB::table('recipes')
+    //      ->join('favorites', 'recipe.id', '=', 'favorites.recipe_id')
+    //      ->where('favorites.user_id', '=', $user_id)
+    //      ->get();
+    $user = auth()->user();
+
+
+    $query = Recipe::query();
+
+    $keyword =  $user->id;
+  
+
+if (isset($keyword)) {
+    // $query->where('name', 'like', '%' . self::escapeLike($keyword) . '%');
+
+    $query->WhereHas('favorites', function ($query) use ($keyword){
+        $query->where('user_id', '=',  $keyword );
+    });
+}
+
+     
+
+       $recipes = $query->orderBy('id', 'asc')->paginate(15);
+
+        return view('mypage')->with([
+         'user' => $user,
+         'recipes' => $recipes,
+         'keyword' => $keyword
+      ]);
+}
+
+
+
 
 
 }

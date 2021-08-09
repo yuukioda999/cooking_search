@@ -16,22 +16,36 @@
 
 
 
-/**
- * 管理者権限にてアクセス可能なページ
- */
+Auth::routes();
 
 
 Route::group(['middleware' => 'auth'], function () {
     
+    // ユーザートップ
     Route::get('/', 'AdminController@recipeSearch')->name('search');
-    });
+    //レシピ検索
+    Route::get('/recipe_search', 'AdminController@recipe_search')->name('recipe_search'); 
+    //レシピ詳細
+    Route::get('/recipe_search/recipe_Detail/{id}', 'AdminController@recipe_Detail')->name('recipe_Detail'); 
+    // お気に入り機能
+    Route::resource('favorites', 'FavoritesController', ['only' => ['store', 'destroy']]);
+    // お気に入り機能
+    // マイページ
+    Route::get('/mypage', 'AdminController@mypage')->name('mypage');
+
+});
 
 
-    Auth::routes();
 
-     //レシピ検索
-     Route::get('/recipe_search', 'AdminController@recipe_search')->name('recipe_search'); 
 
+
+
+
+  
+
+/**
+ * 管理者権限にてアクセス可能なページ
+ */
     
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
     
@@ -43,18 +57,12 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::post('/admin/store', 'AdminController@store')->name('store'); 
     //レシピ検索
     Route::get('/admin/recipe_list', 'AdminController@recipe_list')->name('recipe_list'); 
-   
-    
-   
-    
-
     //ユーザー詳細を表示
     Route::get('/admin/{id}', 'AdminController@showDetail')->name('detail');
     //ユーザー編集画面を表示
     Route::get('/admin/edit/{id}', 'AdminController@showEdit')->name('edit');
     //ユーザー編集
     Route::post('/admin/update', 'AdminController@exeUpdate')->name('update');
-
     //レシピ詳細を表示
     Route::get('/admin/recipe_list/{id}', 'AdminController@recipe_showDetail')->name('recipe_detail');
     //レシピ編集画面を表示
@@ -63,10 +71,6 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::post('/admin/recipe_list/recipe_update', 'AdminController@recipe_exeUpdate')->name('recipe_update');
     //レシピ削除
     Route::post('/admin/recipe_list/delete/{id}/', 'AdminController@exeDelete')->name('delete');
-    
-
-
-
 });
 
 
