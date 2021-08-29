@@ -99,7 +99,7 @@
                             キャンセル
                         </a>
                         <button type="submit" class="btn btn-primary" >
-                            投稿する
+                            登録する
                         </button>
                     </div>
 

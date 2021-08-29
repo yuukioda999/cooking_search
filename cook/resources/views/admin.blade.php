@@ -10,10 +10,9 @@
 <div class="col-4 mx-auto" 
 ><div class="form-group">
 <form class="form-inline" method="get" action="{{url('admin')}}">
+  <div class="d-flex"><input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="">
+   <input type="submit" value="検索" class="btn btn-info"></div>
   
-  <input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="">
-  
-  <input type="submit" value="検索" class="btn btn-info">
 </form>
 </div>
 </div>
@@ -37,7 +36,7 @@
 					
           <th>ユーザー</th>
           <th>メールアドレス</th>
-          <th></th>
+          
      
           
           
@@ -48,8 +47,8 @@
           <td><a href="{{ url('admin/' . $user->id) }}">{{$user -> name}}</a></td>
           <td>{{$user ->email}}</a></td>
           
-          <td class="d-flex">
-          </form></td>
+          
+          </form>
           
           
       </tr>

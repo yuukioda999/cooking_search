@@ -9,7 +9,42 @@
 
 @section('content')
 <!-- //ここから検索機能  -->
+<div class="roww">
+<div class="col-4 mx-auto " 
+><div class="form-group">
 
+</div>
+</div>
+<div class="container col-md-10 col-md-offset-2">
+	<div class="card bg-light">
+		<div class="card-header">マイページ</div>
+		<div class="card-body table-responsive-sm">
+
+
+<table class="table table-striped table-hover">
+			<div class="form-group">
+                <label for="title">
+                    ユーザーネーム
+                </label>
+              <p>{{ $user->name }}</p>
+            </div>
+            <div class="form-group">
+                <label for="content">
+                    メールアドレス
+                </label>
+                <p>{{ $user->email }}</p>
+            </div>
+						<div class="mt-5">
+						<a class="btn btn-secondary text-light" onclick="location.href='/admin'">
+                    戻る
+                </a>
+						<button type="button" class="btn btn-primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 <!-- ここから一覧表示 -->
 
 <div class="row">
@@ -25,12 +60,12 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        
+    
 
         @foreach($recipes as $recipe)
         <div class="col">
           <div class="card shadow-sm">
-          <img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-3" width="100%" height="250" alt="profile_image">
+          <img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-3" width="100%" height="200" alt="profile_image">
     
             <div class="card-body">
               <p class="card-text">{{ $recipe->name }}</p>

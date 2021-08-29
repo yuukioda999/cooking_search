@@ -8,6 +8,7 @@ use App\Models\Favorite;
 use App\Models\Tag;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Http\Requests\RecipeRequest;
 
 class AdminController extends Controller
 {
@@ -93,11 +94,11 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
 
     //投稿のDBへのレコード作成
     
-    public function store(Request $request)
+    public function store(RecipeRequest $request)
      {
-        $recipe = $request->validate([
-            'name' => 'required|max:50',
-        ]);
+        // $recipe = $request->validate([
+        //     'name' => 'required|max:50',
+        // ]);
 
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙ー-]+)/u', $request->tags, $match);
@@ -183,7 +184,7 @@ public function recipe_showEdit($id){
 
 
 
-public function recipe_exeUpdate(Request $request)
+public function recipe_exeUpdate(RecipeRequest $request)
      {
 
         $inputs = $request->all();
@@ -272,14 +273,13 @@ public function recipe_exeUpdate(Request $request)
     $tags7 = Tag::inRandomOrder()->take(1)->get();
     $tags8 = Tag::inRandomOrder()->take(1)->get();
     $tags9 = Tag::inRandomOrder()->take(1)->get();
-    $tags10 = Tag::inRandomOrder()->take(1)->get();
-  
+   
     
 
 
     
 
-    return view('home',compact('tags1','tags2','tags3','tags4','tags5','tags6','tags7','tags8','tags9','tags10'));
+    return view('home',compact('tags1','tags2','tags3','tags4','tags5','tags6','tags7','tags8','tags9'));
  
 
 }

@@ -57,7 +57,7 @@
                     name="text1"
                     class="form-control"
                 
-                >{{ $recipe->text1}}</textarea>
+                >{{$recipe->text1}}</textarea>
 
                 <label for="content">
                     レシピ
@@ -81,6 +81,7 @@
                 
                 <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
                 @endforeach
+                <!-- {{'#'.$recipe->text1} -->
                 </div>
             </div>
             <div class="mt-5">
