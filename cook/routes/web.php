@@ -18,6 +18,8 @@
 
 Auth::routes();
 
+Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth')->where('service', 'google');
+Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
 
 Route::group(['middleware' => 'auth'], function () {
     
