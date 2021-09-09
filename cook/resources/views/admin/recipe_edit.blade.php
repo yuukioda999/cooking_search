@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- //ここから検索機能  -->
 
-<!-- ここから一覧表示 -->
 
 <div class="row">
 <div class="col-4 mx-auto" 

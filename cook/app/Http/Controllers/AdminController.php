@@ -9,6 +9,7 @@ use App\Models\Tag;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Http\Requests\RecipeRequest;
+use App\Http\Requests\RecipeeditRequest;
 use App\Http\Requests\UserRequest;
 
 class AdminController extends Controller
@@ -186,7 +187,7 @@ public function recipe_showEdit($id){
 
 
 
-public function recipe_exeUpdate(RecipeRequest $request)
+public function recipe_exeUpdate(RecipeeditRequest $request)
      {
 
         $inputs = $request->all();
@@ -231,9 +232,13 @@ public function recipe_exeUpdate(RecipeRequest $request)
         foreach ($tags as $tag) {
             array_push($tags_id, $tag['id']);
         };
-         
+         if($request->has('profile_image')){
             $image_path = $request->file('profile_image')->store('public/avatar/');
             $recipe->profile_image =  basename($image_path);
+         }else{
+           
+         }
+          
         
            
             $recipe->save(); 
