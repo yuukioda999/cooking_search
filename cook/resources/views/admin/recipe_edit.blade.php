@@ -13,7 +13,7 @@
 </div>
 <div class="container col-md-10 col-md-offset-2">
 	<div class="card">
-		<div class="card-header">レシピ詳細</div>
+		<div class="card-header">レシピ更新</div>
 		<div class="card-body table-responsive-sm">
 		<form method="POST" enctype="multipart/form-data" action="{{ route('recipe_update') }}" onSubmit="return checkSubmit()">
         @csrf
@@ -81,7 +81,7 @@
                 
                 <span class="badge badge-pill badge-info">{{$recipe_tag->name}}</span>
                 @endforeach
-                <!-- {{'#'.$recipe->text1} -->
+              
                 </div>
             </div>
             <div class="mt-5">

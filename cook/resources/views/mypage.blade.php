@@ -1,14 +1,6 @@
-
-  <!-- @foreach ($recipes as $recipe)
-
-
-  <u><b>{{ $recipe->name }}</b></u>
-
-  @endforeach -->
-  @extends('layouts.app')
-
+@extends('layouts.app')
 @section('content')
-<!-- //ここから検索機能  -->
+
 <div class="roww">
 <div class="col-4 mx-auto " 
 ><div class="form-group">
@@ -35,10 +27,10 @@
                 <p>{{ $user->email }}</p>
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/admin'">
+						<a class="btn btn-secondary text-light" onclick="location.href='/'">
                     戻る
                 </a>
-						<button type="button" class="btn btn-primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='mypage/edit/{{ $user->id }}'">編集</button>
 						</div>
 			</div>
 		</div>

@@ -23,15 +23,13 @@ class RecipeRequest extends FormRequest
      */
     public function rules()
     {
-     return [
-         'name' => 'required',
-         'profile_image' => 'required',
-         'text1' => 'required',
-         'text2' => 'required',
-         'tags' =>  'required'
-         
-     ];
+        return [
+            'name' => 'required',
+            'profile_image' => 'required',
+            'text1' => 'required',
+            'text2' => 'required',
+            'tags' =>  'required|regex:/^#.*$/|max:100'
+   
+        ];
     }
-
-
 }

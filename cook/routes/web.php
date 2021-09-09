@@ -31,9 +31,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/recipe_search/recipe_Detail/{id}', 'AdminController@recipe_Detail')->name('recipe_Detail'); 
     // お気に入り機能
     Route::resource('favorites', 'FavoritesController', ['only' => ['store', 'destroy']]);
-    // お気に入り機能
     // マイページ
     Route::get('/mypage', 'AdminController@mypage')->name('mypage');
+    // ユーザー編集画面表示
+    Route::get('/mypage/edit/{id}', 'AdminController@user_showEdit')->name('user_showEdit');
+     //ユーザー編集
+    Route::post('/mypage/update', 'AdminController@user_exeUpdate')->name('user_exeUpdate');
 
 });
 

@@ -9,6 +9,7 @@ use App\Models\Tag;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Http\Requests\RecipeRequest;
+use App\Http\Requests\UserRequest;
 
 class AdminController extends Controller
 {
@@ -101,7 +102,8 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
         // ]);
 
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙ー-]+)/u', $request->tags, $match);
+        // preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙ー-]+)/u', $request->tags, $match);
+        preg_match_all('/#([a-zA-Z0-9ａ-ｚA-Zぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
 
         // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
         $tags = [];
@@ -190,7 +192,7 @@ public function recipe_exeUpdate(RecipeRequest $request)
         $inputs = $request->all();
 
        
-            // ブログを更新
+            // レシピレシピを更新
            
             $recipe = Recipe::find($inputs['id']);
             $recipe->fill([
@@ -199,8 +201,7 @@ public function recipe_exeUpdate(RecipeRequest $request)
                 'text2' => $inputs['text2'],   
             ]);
             // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
-
+            preg_match_all('/#([a-zA-Z0-9ａ-ｚA-Zぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
         // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
         $tags = [];
         foreach ($match[1] as $tag) {
@@ -215,7 +216,7 @@ public function recipe_exeUpdate(RecipeRequest $request)
             array_push($tags_id, $tag['id']);
         };
          // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+         preg_match_all('/#([a-zA-Z0-9ａ-ｚA-Zぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
 
         // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使います。
         $tags = [];
@@ -467,6 +468,44 @@ if (isset($keyword)) {
 
 
 
+/**
+     * ユーザー編集画面を表示する
+     */
+
+    public function user_showEdit($id){
+
+        $user = User::find($id);
+ 
+        return view('user_edit',['user' => $user]);
+     
+ 
+    }
+
+
+
+    /**
+     * ユーザー更新をする
+     */
+
+    public function user_exeUpdate(Request $request){
+
+
+        $inputs = $request->all();
+
+       
+
+        $user = User::find($inputs ['id']);
+        $user->fill([
+            'name' => $inputs['name'],
+            'email' => $inputs['email']
+        ]);
+        $user->save();
+        \DB::commit();
+ 
+        return view('user_edit',['user' => $user]);
+     
+ 
+    }
 
 
 }

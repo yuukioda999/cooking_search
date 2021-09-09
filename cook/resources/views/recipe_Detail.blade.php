@@ -25,7 +25,7 @@
                 <label for="title">
                     画像
                 </label>
-              <p><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="80" height="80" alt="profile_image"></p>
+              <p><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="300" height="300" alt="profile_image"></p>
             </div>
             <div class="form-group">
                 <label for="content">
@@ -51,7 +51,7 @@
 
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/recipe_search/'">
+						<a class="btn btn-secondary text-light" onclick="location.href='/recipe_search/{{ $recipe->id }}'">
                     戻る
                 </a>
 		                  

@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="card-header" style="background-color:#aaffd5;">{{ __('Login') }}</div>
                 <form method="POST" action="{{ route('login') }}">
-/* 省略 */
+
 </form>
-<a href="auth/google">Googleログイン</a> // 追加
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -60,12 +60,13 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                <a href="auth/google" class="btn btn-danger">Googleログイン</a> 
+                            </div>
+                            @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                            </div>
                         </div>
                     </form>
                 </div>
