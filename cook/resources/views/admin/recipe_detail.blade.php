@@ -47,7 +47,7 @@
                 
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/admin/recipe_list'">
+						<a class="btn btn-secondary text-light" onclick=history.back()>
                     戻る
                 </a>
 						<button type="button" class="btn btn-primary" onclick="location.href='/admin/recipe_list/recipe_edit/{{ $recipe->id }}'">編集</button>

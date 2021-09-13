@@ -51,7 +51,7 @@
 
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/recipe_search/{{ $recipe->id }}'">
+						<a class="btn btn-secondary text-light" onclick=history.back()>
                     戻る
                 </a>
 		                  

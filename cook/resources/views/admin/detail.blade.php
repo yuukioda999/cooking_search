@@ -29,7 +29,8 @@
                 <p>{{ $user->email }}</p>
             </div>
 						<div class="mt-5">
-						<a class="btn btn-secondary text-light" onclick="location.href='/admin'">
+						
+						<a class="btn btn-secondary text-light" onclick=history.back()>
                     戻る
                 </a>
 						<button type="button" class="btn btn-primary" onclick="location.href='/admin/edit/{{ $user->id }}'">編集</button>
