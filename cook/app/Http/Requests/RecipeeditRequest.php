@@ -24,7 +24,7 @@ class RecipeeditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:100',
             'text1' => 'required',
             'text2' => 'required',
             'tags' =>  'required|regex:/^#.*$/|max:100'

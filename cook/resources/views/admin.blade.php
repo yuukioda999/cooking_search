@@ -7,22 +7,13 @@
 <div class="col-4 mx-auto" 
 ><div class="form-group">
 <form class="form-inline" method="get" action="{{url('admin')}}">
-  <div class="d-flex"><input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="">
+  <div class="d-flex"><input type="text" name="keyword" value="{{old('keyword',$keyword)}}" class="form-control" placeholder="">
    <input type="submit" value="検索" class="btn btn-info"></div>
   
 </form>
 </div>
 </div>
 <div class="container col-md-10 col-md-offset-2">
-<!-- @can('admin')
-	<a href="{{'/'}}">ユーザートップへ</a>
-        @endcan
-@can('admin')
-	<a href="{{'/admin'}}">ユーザー検索</a>
-        @endcan
-@can('admin')
-	<a href="{{'/admin/create'}}">レシピ作成</a>
-        @endcan -->
 	<div class="card">
 		<div class="card-header">ユーザーリスト</div>
 		<div class="card-body table-responsive-sm">

@@ -12,6 +12,7 @@
 <form class="form-inline" method="get" action="{{url('admin/recipe_list')}}">
   <div class="d-flex">
   <input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="">
+
   <input type="submit" value="検索" class="btn btn-info"></div>
 </form>
 </div>

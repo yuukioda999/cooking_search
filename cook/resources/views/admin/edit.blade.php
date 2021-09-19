@@ -29,9 +29,9 @@
                     value="{{ $user->name }}"
                     type="text"
                 >
-                @if ($errors->has('title'))
+                @if ($errors->has('name'))
                     <div class="text-danger">
-                        {{ $errors->first('title') }}
+                        {{ $errors->first('name') }}
                     </div>
                 @endif
             </div>
@@ -46,9 +46,9 @@
                     value="{{ $user->email }}"
                     type="text"
                 >
-                @if ($errors->has('content'))
+                @if ($errors->has('email'))
                     <div class="text-danger">
-                        {{ $errors->first('content') }}
+                        {{ $errors->first('email') }}
                     </div>
                 @endif
             </div>

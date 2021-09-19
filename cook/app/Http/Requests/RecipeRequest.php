@@ -24,7 +24,7 @@ class RecipeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:100',
             'profile_image' => 'required',
             'text1' => 'required',
             'text2' => 'required',

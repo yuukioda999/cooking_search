@@ -11,17 +11,10 @@
         <form class="form-inline" method="get" action="{{url('/recipe_search')}}">
   
 
-  
-<!--  
 
-        @foreach($tags1 as $tag)
-<div class="position-relative">
-<input type="checkbox " class="btn-check" name="keyword" value="{{$tag->name}}"id="btn-check-1-outlined" autocomplete="off">
-<label class="btn btn-outline-primary rounded-pill position-absolute top-0 start-0" for="btn-check-1-outlined">{{ $tag->name }}</label><br>
-      @endforeach -->
       <div class="position-relative">
       @foreach($tags1 as $tag)
-<input type="checkbox" class="btn-check" name="keyword2" value="{{$tag->name}}" id="btn-check-1-outlined" autocomplete="off" >
+<input type="checkbox" class="btn-check" name="keyword1" value="{{$tag->name}}" id="btn-check-1-outlined" autocomplete="off" >
 <label class="btn btn-outline-primary rounded-pill position-absolute top-0 start-0" for="btn-check-1-outlined">{{ $tag->name }}</label><br>
       @endforeach
 

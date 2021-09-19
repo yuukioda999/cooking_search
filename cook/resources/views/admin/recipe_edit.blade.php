@@ -27,9 +27,9 @@
                     value="{{ $recipe->name }}"
                     type="text"
                 >
-                @if ($errors->has('title'))
+                @if ($errors->has('name'))
                     <div class="text-danger">
-                        {{ $errors->first('title') }}
+                        {{ $errors->first('nameX`') }}
                     </div>
                 @endif
             </div>

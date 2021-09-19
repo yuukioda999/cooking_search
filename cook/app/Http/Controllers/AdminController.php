@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Requests\RecipeeditRequest;
 use App\Http\Requests\UserRequest;
+use Session;
+
 
 class AdminController extends Controller
 {
@@ -22,30 +24,40 @@ class AdminController extends Controller
 
 		$keyword = $request->input('keyword');
 
+       
 		$query = User::query();
 
 		if(!empty($keyword))
     {
-$query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keyword.'%');
+       $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keyword.'%');
    }
 
-
+   
 
 		$user_list = $query->orderBy("id", "desc")->paginate(10);
+        $request->session()->put('keyword',$keyword);
+       
+ 
 		return view("admin")->with('user_list',$user_list)->with('keyword',$keyword);
+        
    }
 
    /**
      * ユーザ一詳細を表示する
      */
 
-   public function showDetail($id){
+   public function showDetail($id,Request $request){
 
        $user = User::find($id);
 
-       return view('admin.detail',['user' => $user]);
-    
+       $keyword = $request->session()->get('keyword');
+      
+       
+       
 
+       return view('admin.detail',['user' => $user])->with('keyword',$keyword);
+    
+   
    }
    /**
      * ユーザー編集画面を表示する
@@ -64,7 +76,7 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
      * ユーザー更新をする
      */
 
-    public function exeUpdate(Request $request){
+    public function exeUpdate(UserRequest $request){
 
 
         $inputs = $request->all();
@@ -149,8 +161,7 @@ $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keywo
 		$keyword = $request->input('keyword');
 
 		$query = Recipe::query();
-	
-       
+      
        
 
 		if(!empty($keyword))
@@ -161,16 +172,18 @@ $query->Where('name','like','%'.$keyword.'%');
 
 
 		$recipe_list = $query->orderBy("id", "desc")->paginate(10);
-	
+        $request->session()->put('keyword',$keyword);
+       
 		return view("admin.recipe_list")->with('recipe_list',$recipe_list)->with('keyword',$keyword);
    }
     
 
-   public function recipe_showDetail($id){
+   public function recipe_showDetail($id,Request $request){
 
     $recipe = Recipe::find($id);
-
-    return view('admin.recipe_detail',['recipe' => $recipe]);
+    $keyword = $request->session()->get('keyword'); 
+    
+    return view('admin.recipe_detail',['recipe' => $recipe])->with('keyword',$keyword);
  
 
 }
@@ -492,23 +505,21 @@ if (isset($keyword)) {
      * ユーザー更新をする
      */
 
-    public function user_exeUpdate(Request $request){
+    public function user_exeUpdate(UserRequest $request){
 
+        
 
-        $inputs = $request->all();
-
-       
-
+        $inputs = $request->all();     
         $user = User::find($inputs ['id']);
         $user->fill([
             'name' => $inputs['name'],
             'email' => $inputs['email']
         ]);
         $user->save();
-        \DB::commit();
+        // \DB::commit();
  
         return view('user_edit',['user' => $user]);
-     
+   
  
     }
 
