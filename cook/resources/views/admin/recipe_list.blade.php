@@ -5,10 +5,9 @@
 
 <!-- ここから一覧表示 -->
 
-<div class="row">
+<div class="row  col-lg-4 col-sm-4 mx-auto">
 
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="form-group">
 <form class="form-inline" method="get" action="{{url('admin/recipe_list')}}">
   <div class="d-flex">
   <input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="">
@@ -44,7 +43,7 @@
 					
           <td><a href="{{ url('admin/recipe_list/' . $recipe->id) }}">{{$recipe->name}}</a></td>
           <div class="col-md-6 d-flex align-items-center">
-          <td><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
+          <td><img src="http://drive.google.com/uc?export=view&id=1nDuLIxM-T9-H5D6ohRI-bhcqSBa5knCc"  class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
 </div></td> 
          
           <td>@foreach($recipe->tags as $recipe_tag)

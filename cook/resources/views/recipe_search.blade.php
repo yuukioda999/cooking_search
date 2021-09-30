@@ -7,8 +7,7 @@
 
 <div class="row">
 
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="form-group">
 
 </div>
 </div>
@@ -23,7 +22,7 @@
         @foreach($tags as $tag)
         <div class="col">
           <div class="card shadow-sm">
-          <img src="{{ asset('storage/avatar/' .$tag->profile_image) }}"  class="mr-3" width="100%" height="250" alt="profile_image">
+          <img src="http://drive.google.com/uc?export=view&id=1nDuLIxM-T9-H5D6ohRI-bhcqSBa5knCc"  class="mr-3" width="100%" height="250" alt="profile_image">
     
             <div class="card-body">
               <p class="card-text">{{ $tag->name }}</p>

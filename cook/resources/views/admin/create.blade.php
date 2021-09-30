@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-4 wrap">
         <div class="border p-4">
             <h1 class="h5 mb-4">
                 レシピ作成

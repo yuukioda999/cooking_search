@@ -4,8 +4,7 @@
 
 
 <div class="row">
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="form-group">
 
 </div>
 </div>
@@ -25,7 +24,7 @@
                 <label for="title">
                     画像
                 </label>
-              <p><img src="{{ asset('storage/avatar/' .$recipe->profile_image) }}"  class="mr-2 rounded-circle" width="300" height="300" alt="profile_image"></p>
+              <p><img src="http://drive.google.com/uc?export=view&id=1nDuLIxM-T9-H5D6ohRI-bhcqSBa5knCc"  class="mr-2 rounded-circle" width="300" height="300" alt="profile_image"></p>
             </div>
             <div class="form-group">
                 <label for="content">

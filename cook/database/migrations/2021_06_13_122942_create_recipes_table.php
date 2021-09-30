@@ -18,8 +18,8 @@ class CreateRecipesTable extends Migration
             $table->unsignedbigInteger('user_id')->comment('ユーザID');
             $table->string('name');
             $table->string('profile_image')->nullable()->comment('料理画像');
-            $table->string('text1')->comment('材料');
-            $table->string('text2')->comment('レシピ');
+            $table->string('text1',1000)->comment('材料');
+            $table->string('text2',1000)->comment('レシピ');
             $table->softDeletes();
             $table->timestamps();
 

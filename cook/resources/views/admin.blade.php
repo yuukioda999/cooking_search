@@ -2,10 +2,9 @@
 
 @section('content')
 
-<div class="row">
+<div class="row  col-lg-4 col-sm-4 mx-auto">
 
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="form-group">
 <form class="form-inline" method="get" action="{{url('admin')}}">
   <div class="d-flex"><input type="text" name="keyword" value="{{old('keyword',$keyword)}}" class="form-control" placeholder="">
    <input type="submit" value="検索" class="btn btn-info"></div>

@@ -10,7 +10,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('/css/custom.css') }}">
     
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'moodcook') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -31,12 +31,12 @@
 
    
 </head>
-<body class=bg-light>
+<body class="bg-light">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#aaffd5;">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm " style="background-color:#aaffd5;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{('moodcook') }}
                     
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -3,9 +3,8 @@
 @section('content')
 
 
-<div class="row">
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="row wrap">
+<div class="form-group">
 
 </div>
 </div>

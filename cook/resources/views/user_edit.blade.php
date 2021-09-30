@@ -6,8 +6,7 @@
 <!-- ここから一覧表示 -->
 
 <div class="row">
-<div class="col-4 mx-auto" 
-><div class="form-group">
+<div class="form-group">
 
 </div>
 </div>
