@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4 wrap">
+    <div class="container mt-4">
         <div class="border p-4">
             <h1 class="h5 mb-4">
                 レシピ作成
@@ -54,9 +54,9 @@
                         </label>
 
                         <textarea
-                            id="botext1dy"
+                            id="textarea"
                             name="text1"
-                            class="form-control {{ $errors->has('text1') ? 'is-invalid' : '' }}"
+                            class="form-control {{ $errors->has('text1') ? 'is-invalid' : '' }} variabletextarea"
                             rows="4"
                         >{{ old('text1') }}</textarea>
                         @if ($errors->has('text1'))
@@ -71,9 +71,9 @@
                         </label>
 
                         <textarea
-                            id="text2"
+                            id="textarea"
                             name="text2"
-                            class="form-control {{ $errors->has('text2') ? 'is-invalid' : '' }}"
+                            class="form-control {{ $errors->has('text2') ? 'is-invalid' : '' }} variabletextarea"
                             rows="4"
                         >{{ old('text2') }}</textarea>
                         @if ($errors->has('text2'))
@@ -87,7 +87,7 @@
                         <label for="tags">
                             タグ
                         </label>
-                        <input id="tags" name="tags"  class="form-control {{ $errors->has('tags') ? 'is-invalid' : '' }}" value="{{ old('tags') }}"type="text">
+                        <input id="tags" name="tags"  class="form-control {{ $errors->has('tags') ? 'is-invalid' : '' }} " value="{{ old('tags') }}"type="text">
                         @if ($errors->has('tags'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('tags') }}
@@ -107,4 +107,19 @@
             </form>
         </div>
     </div>
+    @section('script')
+  <script>
+
+document.querySelectorAll('.variabletextarea').forEach(variabletextarea)
+
+function variabletextarea(el) {
+  el.addEventListener('input', e => {
+    e.target.style.height = "auto";
+    e.target.style.height = (e.target.scrollHeight)+"px";
+  })
+}
+ 
+  </script>
+ 
+@endsection
 @endsection

@@ -10,7 +10,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('/css/custom.css') }}">
     
-    <title>{{ config('app.name', 'moodcook') }}</title>
+    <title>{{ 'moodcook' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

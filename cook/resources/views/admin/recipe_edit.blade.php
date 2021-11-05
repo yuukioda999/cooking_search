@@ -52,7 +52,7 @@
                 <textarea
                     id="text1"
                     name="text1"
-                    class="form-control"
+                    class="form-control variabletextarea"
                 
                 >{{$recipe->text1}}</textarea>
 
@@ -62,7 +62,7 @@
                 <textarea
                     id="text2"
                     name="text2"
-                    class="form-control"
+                    class="form-control variabletextarea"
                     value="{{ $recipe->text2 }}"   
                 >{{ $recipe->text2}}</textarea>
                 <label for="tags">
@@ -105,7 +105,22 @@
 </div>
 </div>
 
+@section('script')
+  <script>
 
+document.querySelectorAll('.variabletextarea').forEach(variabletextarea)
+
+function variabletextarea(el) {
+  el.addEventListener('input', e => {
+    e.target.style.height = "auto";
+    e.target.style.height = (e.target.scrollHeight)+"px";
+  })
+}
+ 
+  </script>
+ 
+@endsection
 
 
 @endsection
+

@@ -17,6 +17,8 @@
 
 
 Auth::routes();
+# ゲストユーザーログイン
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
 Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth')->where('service', 'google');
 Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');

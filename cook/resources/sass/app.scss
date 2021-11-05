@@ -13,3 +13,17 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+textarea {
+  outline: none;
+  font-size:15px;
+  font-family: "Yu Gothic";
+  resize: none;
+  width:300px;
+  min-height:70px;
+  padding: 2px;
+  line-height: 1.5;
+  white-space:pre-wrap;
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+}

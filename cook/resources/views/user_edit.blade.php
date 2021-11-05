@@ -17,17 +17,25 @@
 		<form method="POST" action="{{ route('user_exeUpdate') }}" onSubmit="return checkSubmit()">
         @csrf
             <input type="hidden" name="id" value="{{ $user->id }}">
+            @if (Auth::id() == 2)
+  <p class="text-danger">※ゲストユーザーは、ユーザー名とメールアドレスを編集できません。</p>
+@endif
             <div class="form-group">
                 <label for="title">
                     ユーザーネーム
                 </label>
-                <input
+                @if (Auth::id() == 2)
+    <input class="form-control" type="text" id="name" name="name" value="{{ $user->name }}" readonly>
+  @else
+  <input
                     id="name"
                     name="name"
                     class="form-control"
                     value="{{ $user->name }}"
                     type="text"
                 >
+  @endif
+               
                 @if ($errors->has('name'))
                     <div class="text-danger">
                         {{ $errors->first('name') }}
@@ -38,13 +46,17 @@
                 <label for="content">
                     メールアドレス
                 </label>
-                <input
-                    id="email"
-                    name="email"
-                    class="form-control"
-                    value="{{ $user->email }}"
-                    type="text"
-                >
+                @if (Auth::id() == 2)
+    <input class="form-control" type="text" id="email" name="email" value="{{ $user->email }}" readonly>
+        @else
+        <input id="email"
+                name="email"
+                class="form-control"
+                value="{{ $user->email }}"
+                type="text"
+            >
+        @endif
+                
                 @if ($errors->has('email'))
                     <div class="text-danger">
                         {{ $errors->first('email') }}

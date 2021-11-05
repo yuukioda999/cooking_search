@@ -61,7 +61,11 @@
                                 </button>
 
                                 <a href="auth/google" class="btn btn-danger">Googleログイン</a> 
+                                <a href="{{ route('login.guest') }}" class="btn btn-success">
+                                ゲストログイン
+                               </a>
                             </div>
+              
                             @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
@@ -69,6 +73,7 @@
                                 @endif
                         </div>
                     </form>
+                  
                 </div>
             </div>
         </div>

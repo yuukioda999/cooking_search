@@ -14,6 +14,9 @@
 
 
 <table class="table table-striped table-hover">
+@if (Auth::id() == 2)
+  <p class="text-danger">※ゲストユーザーは、ユーザー名とメールアドレスを編集できません。</p>
+@endif
 			<div class="form-group">
                 <label for="title">
                     ユーザーネーム
