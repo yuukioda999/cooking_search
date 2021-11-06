@@ -6,7 +6,7 @@
 
 
 URL
-http://moodcook.herokuapp.com　
+<http://moodcook.herokuapp.com>　
 
 ゲストログインボタンでログインできます。
 
