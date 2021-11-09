@@ -10,7 +10,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('/css/custom.css') }}">
     
-    <title>{{ 'moodcook' }}</title>
+    <title>{{ config('app.name', 'moodcook') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,6 +23,7 @@
     <!-- Styles -->
     
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.scss') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         
 
@@ -31,9 +32,9 @@
 
    
 </head>
-<body class="bg-light">
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm " style="background-color:#aaffd5;">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm " style="background-color:#00A19D;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{('moodcook') }}
