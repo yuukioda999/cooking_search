@@ -7,10 +7,9 @@
 
 
 
-
         <form class="form-inline" method="get" action="{{url('/recipe_search')}}">
   
-
+    
 
       <div class="position-relative">
       @foreach($tags1 as $tag)
@@ -73,5 +72,7 @@
     </div>
     
 </div>
-
+<script>
+      
+</script>
 @endsection

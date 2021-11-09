@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light  shadow-sm " style="background-color:#00A19D;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-light" href="{{ url('/') }}">
                     {{('moodcook') }}
                     
                 </a>
@@ -49,20 +49,20 @@
                         
       <div class="navbar-nav ml-auto">
       
-        <a class="nav-link" href="{{'/'}}">ユーザートップ</a>
+        <a class="nav-link text-light" href="{{'/'}}">ユーザートップ</a>
        
-        <a class="nav-link" href="{{'/mypage'}}">マイページ</a>
+        <a class="nav-link text-light" href="{{'/mypage'}}">マイページ</a>
 
         @can('admin')
-        <a class="nav-link" href="{{'/admin'}}">ユーザー検索</a>
+        <a class="nav-link text-light" href="{{'/admin'}}">ユーザー検索</a>
         @endcan
 
         @can('admin')
-        <a class="nav-link" href="{{'/admin/create'}}">レシピ作成</a>
+        <a class="nav-link text-light" href="{{'/admin/create'}}">レシピ作成</a>
         @endcan
 
         @can('admin')
-        <a class="nav-link" href="{{'/admin/recipe_list'}}">レシピ検索</a>
+        <a class="nav-link text-light" href="{{'/admin/recipe_list'}}">レシピ検索</a>
         @endcan
 </div>
    
@@ -71,11 +71,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-light"  href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -83,9 +83,9 @@
 
                         <div class="navbar-right">
                         <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   {{ Auth::user()->name }}</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ route('logout') }}"
+    <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   {{ Auth::user()->name }}</a>
+    <ul class="dropdown-menu" style="background-color:#00A19D;"> 
+      <li><a class="dropdown-item text-light" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
